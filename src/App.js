@@ -12,6 +12,7 @@ const Dashboard = React.lazy(()=> import('./pages/dashboard'));
 function App() {
   const {user} = useAuthListener();
   return (
+    //here we provide a value to the context user so it can used in the tree is wraps around 
   <UserContext.Provider value = {user}>
 
   <Router> 

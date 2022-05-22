@@ -17,7 +17,6 @@ export default function useUser() {
             //we need a function that we can call (firebase service) that gets the user data based on ID
             const [response] = await getUserById(user.uid);  //user is the context we pass down to the componenet tree 
             setActiveUser(response);  
-
         }
 
 
