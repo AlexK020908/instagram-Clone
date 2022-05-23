@@ -2,8 +2,8 @@ import { initializeApp } from "firebase/app";
 import 'firebase/firestore';
 import 'firebase/auth';
 
-//import seed file 
-//import {seedDatabase} from '../seed';
+// import seed file 
+// import {seedDatabasePhotos} from '../seed';
 import { getFirestore } from 'firebase/firestore';
 
 const config = {
@@ -24,6 +24,6 @@ const firebase = getFirestore(app);
 const FieldValue = firebase.firestore;
 
 //call the seed file 
-//seedDatabase(FieldValue); //initally passed in firebase
+//seedDatabasePhotos(firebase); //initally passed in firebase
 
 export { firebase, FieldValue };

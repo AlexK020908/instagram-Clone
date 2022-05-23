@@ -3,6 +3,7 @@ import {firebase, FieldValue} from '../lib/firebase'
 import { collection, query, where, getDocs,doc, getDoc} from "firebase/firestore";
 import { data } from 'autoprefixer';
 import {updateDoc} from 'firebase/firestore'
+import user from '../components/sidebar/user';
 
 
 export async function doesUsernameExist(username) {
@@ -92,6 +93,43 @@ export async function updateProfileTargetFollowers(docId, profileId) {
     await updateDoc(docRef, {
         followers: temp
     });
+
+
+}
+
+export async function getPhotos(userId, followings) {
+
+    const snapshotPhotos = query(collection(firebase, "photos"), where("userId", 'in', followings));
+    const docs = await getDocs(snapshotPhotos);
+    const res = [];
+
+    const userFollowedPhoto = docs.forEach((doc) => {
+        res.push({...doc.data(), docId:doc.id});
+    });
+
+    console.log(userFollowedPhoto);
+
+    //we also wanna check if the logged in user has liked a page 
+
+    // const photoWithUserDetails = await Promise.all(
+
+    // //here i can do a map 
+    // userFollowedPhoto.map(async (photo) => {
+    //     let userlikedphoto= false;
+    //     if (photo.likes.includes(userId)) {
+    //         userlikedphoto = true;
+    //     }
+
+    //     const user = await getUserById(photo.userId);
+    //     const {username} = user[0];
+    //     return {username, ...photo.data(), userlikedphoto};
+    // })
+
+    // );
+
+
+    return userFollowedPhoto;
+
 
 
 }
