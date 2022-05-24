@@ -93,7 +93,7 @@ export default function Header() {
                         <div className = "flex items-ceter cursor-pointer">
                             <Link to={`/p/${user.displayName}`}>
                                 <img className="rounded-full h-8 w-8 flex"
-                                src = {`/images/avatars/pic.png`}
+                                src = {`/images/avatars/Alex_Kang.png`}
                                 alt = "profile"/>
 
 

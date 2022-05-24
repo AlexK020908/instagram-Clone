@@ -13,7 +13,7 @@ export default function Sidebar() {
     //  const docId = doc.docId;
     // console.log(docId);
      //username and fullname in the User component are props 
-     console.log('top of tree docId',docId ) //problem is docId is not defined here otherwise, everythig would work 
+    // console.log('top of tree docId',docId ) //problem is docId is not defined here otherwise, everythig would work 
 return (
     <div>
         

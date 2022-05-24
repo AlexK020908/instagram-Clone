@@ -15,7 +15,7 @@ const User = (props) =>
     <Link to={`/p/${props.username}`} className="grid grid-cols-4 mb-6 items-center">
         <div className="flex items-center justify-between col-span-1">     
             <img className='rounded-full w-16   2 flex mr-3'
-                     src={`/images/avatars/pic.png`}
+                     src={`/images/avatars/${props.username}.png`}
                      alt=""
             />
 
