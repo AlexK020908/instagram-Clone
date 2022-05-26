@@ -11,7 +11,9 @@ module.exports  = {
       "./src/components/timeline.js",
       "./src/components/post/picture.js",
       "./src/components/sidebar/index.js",
-      "./src/components/post/action.js"],
+      "./src/components/post/action.js",
+      "./src/components/post/footer.js",
+      "./src/components/post/comments.js"],
         theme: {
           extend: {
             colors: {

@@ -23,7 +23,8 @@ export default function Post(props) {
                     <Header username={props.content.username}/>
                     <Pic src = {props.content.imageSrc}/>
                     <Action docId={props.content.docId} userId = {props.content.userId} comments = {props.content.comments} likes = {props.content.likes} 
-                    totalLengthOfLikes = {props.content.likes.length} likedPhoto = {props.content.userLikedPhoto} handlefocus = {handleFocus}/>
+                    totalLengthOfLikes = {props.content.likes.length} likedPhoto = {props.content.userLikedPhoto} handlefocus = {handleFocus} caption = {props.content.caption}
+                    username = {props.content.username} commentInput={CommentInput}/>
         </div>
 
 
@@ -45,7 +46,8 @@ Post.propTypes = {
         userId: PropTypes.string.isRequired,
         likes: PropTypes.array.isRequired,
         docId: PropTypes.string.isRequired,
-        userLikedPhoto:PropTypes.bool.isRequired
+        userLikedPhoto:PropTypes.bool.isRequired,
+        caption: PropTypes.string.isRequired
 
 
     })
