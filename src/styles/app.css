@@ -539,6 +539,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-16 {
   width: 4rem;
 }
+.w-full {
+  width: 100%;
+}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -579,6 +582,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-b {
   border-bottom-width: 1px;
 }
+.border-t {
+  border-top-width: 1px;
+}
+.border-solid {
+  border-style: solid;
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -603,12 +612,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-0 {
   padding-top: 0px;
   padding-bottom: 0px;
-}
-.pt-1 {
-  padding-top: 0.25rem;
-}
-.pb-4 {
-  padding-bottom: 1rem;
 }
 .text-center {
   text-align: center;

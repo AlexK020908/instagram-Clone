@@ -13,7 +13,8 @@ module.exports  = {
       "./src/components/sidebar/index.js",
       "./src/components/post/action.js",
       "./src/components/post/footer.js",
-      "./src/components/post/comments.js"],
+      "./src/components/post/comments.js",
+      './src/components/post/addComment.js'],
         theme: {
           extend: {
             colors: {

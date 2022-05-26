@@ -6,7 +6,8 @@ import {doc, updateDoc} from "firebase/firestore";
 import { arrayUnion, arrayRemove} from "firebase/firestore";
 import Footer from './footer'
 import Comments from './comments.js'
-import { comment } from "postcss";
+
+import AddComment from "./addComment";
 export default function Action(props) {
     const user = useContext(UserContext);
     const userId = user.uid;
@@ -114,6 +115,7 @@ export default function Action(props) {
 
         <Footer caption= {props.caption} username = {props.username}/>
         <Comments docId = {props.docId} comments = {props.comments} commentInput = {props.commentInput} />
+        <AddComment/>
 
     </div>
         
