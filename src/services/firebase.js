@@ -127,30 +127,24 @@ export async function getPhotos(userId, followings) {
     });
 
 
+    //here we are loggin the likes 
 
-    // //we also wanna check if the logged in user has liked a page 
+    const resWithDetails = await Promise.all(
+        res.map(async (photoDoc) => {
+            let userLikedPhoto = false;
+            if (photoDoc.likes.includes(userId)) userLikedPhoto = true;
 
-    // const photoWithUserDetails = await Promise.all(
 
-    // //here i can do a map 
-    // res.map(async (photo) => {
-    //     let userlikedphoto= false;
-    //     if (photo.likes.includes(userId)) {
-    //         userlikedphoto = true;
-    //     }
+            //now add this info to data 
+            return {...photoDoc, userLikedPhoto};
 
-    //     const user = await getUserById(photo.userId);
-    //     const {username} = user[0];
-    //     return {username, ...photo.data(), userlikedphoto};
-    // })
 
-    // //around 6:00 
+        })
+    )
 
-    // );
-
+    console.log(resWithDetails);
     
-
-    return res;
+    return resWithDetails;
 
 
 

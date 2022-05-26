@@ -453,17 +453,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .col-span-3 {
   grid-column: span 3 / span 3;
 }
-.col-span-4 {
-  grid-column: span 4 / span 4;
-}
-.col-start-3 {
-  grid-column-start: 3;
+.col-start-2 {
+  grid-column-start: 2;
 }
 .col-start-5 {
   grid-column-start: 5;
-}
-.col-start-2 {
-  grid-column-start: 2;
 }
 .col-end-4 {
   grid-column-end: 4;
@@ -485,6 +479,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mr-6 {
   margin-right: 1.5rem;
 }
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -502,12 +499,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .mb-16 {
   margin-bottom: 4rem;
-}
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-.block {
-  display: block;
 }
 .flex {
   display: flex;
@@ -539,8 +530,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-16 {
   width: 4rem;
 }
+.w-4 {
+  width: 1rem;
+}
 .cursor-pointer {
   cursor: pointer;
+}
+.select-none {
+  -webkit-user-select: none;
+          user-select: none;
 }
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -557,17 +555,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .items-center {
   align-items: center;
 }
-.justify-center {
-  justify-content: center;
-}
 .justify-between {
   justify-content: space-between;
 }
 .gap-5 {
   gap: 1.25rem;
-}
-.gap-4 {
-  gap: 1rem;
 }
 .rounded-full {
   border-radius: 9999px;
@@ -588,6 +580,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+.fill-red-primary {
+  fill: #ff0000;
 }
 .p-4 {
   padding: 1rem;
@@ -626,6 +621,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity));
 }
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
