@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import AddComment from './addComment';
 
 export default function Comments(props) {
-    const [comments, setComment] = useState(props.comments);
+    const [comments, setComments] = useState(props.comments);
 
     return (
         <>
@@ -39,7 +39,7 @@ export default function Comments(props) {
             <AddComment
                 docId = {props.docId}
                 comments = {props.comments}
-                setComment = {setComment}
+                setComments = {setComments}
                 commentInput = {props.commentInput}  
             
             />
