@@ -1,9 +1,10 @@
 import {useState, useContext} from 'react';
 import { formatDistance } from 'date-fns';
 import { Link } from 'react-router-dom';
+import AddComment from './addComment';
 
 export default function Comments(props) {
-    const [comment, setComment] = useState(props.comments);
+    const [comments, setComment] = useState(props.comments);
 
     return (
         <>
@@ -31,14 +32,17 @@ export default function Comments(props) {
                         </p>
 
                     )
-
-
+                    //need to add dates later 6:50
 
                 })}
             </div>
-        
-        
-        
+            <AddComment
+                docId = {props.docId}
+                comments = {props.comments}
+                setComment = {setComment}
+                commentInput = {props.commentInput}  
+            
+            />
         
         </>
 
