@@ -12,7 +12,8 @@ const NotFound = React.lazy(()=>import('./pages/NotFound'));
 const Dashboard = React.lazy(()=> import('./pages/dashboard'));
  function App() {
   const {user} = useAuthListener();
-
+//to use the protected route we have to 
+  // we just need to wrap routes that wiull be protected --> ex dashboard , and the wrapped contents are called childern 
   return (
     //here we provide a value to the context user so it can used in the tree is wraps around 
   <UserContext.Provider value = {user}>
@@ -22,7 +23,7 @@ const Dashboard = React.lazy(()=> import('./pages/dashboard'));
       <Routes>
         <Route path={ROUTES.LOGIN} element={<Login />}/>
         <Route path = {ROUTES.SIGNUP} element ={<Signup/>}/>
-        <Route path={ROUTES.DASHBOARD} element = {<Dashboard/>}/>
+        <Route path = {ROUTES.DASHBOARD} element = {<Dashboard user={user}/>}/>
         <Route path = "*" element = {<NotFound/>}/>
       </Routes>
       

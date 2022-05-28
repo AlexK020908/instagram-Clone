@@ -25,14 +25,13 @@ export default function AddComment(props) {
         props.setComments([...props.comments, {comment, displayName}]);
         //then here make a call to firebase and update that field
 
+        setComment('');
+        //store in fire base using field value !
         const docRef = doc(firebase, 'photos', `${props.docId}`);
         await updateDoc(docRef, {
             comments: arrayUnion({comment, displayName}),
         })
-    
 
-        setComment('');
-        //store in fire base using field value !
        
 
     }

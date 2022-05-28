@@ -4,7 +4,8 @@ import {useContext, useEffect, useState} from 'react';
 import FirebaseContext from '../context/firebase';
 import {Link} from "react-router-dom"
 import * as ROUTES from '../constants/routes';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword , updateProfile} from "firebase/auth";
+import { getUserById } from "../services/firebase";
 
 export default function Login() {
     const history = useNavigate();
@@ -20,15 +21,16 @@ export default function Login() {
     const handleLogin = async (e) => {
         e.preventDefault();
 
-
         try {
             const auth = getAuth();
+
             await signInWithEmailAndPassword(auth ,Email,password);
             //if everything ok
+          
             history(ROUTES.DASHBOARD);
         } catch(error) {
             setEmail("");
-            setPassword('');
+            setPassword("");
             setError("invalid email or password, please sign up or recheck your information");
         }
     }
@@ -59,7 +61,7 @@ export default function Login() {
                 <h1 style={{"display":"flex","justifyContent":"center", "width": "100%", "height":"100%"}}>
                     <img src="./images/logo.png" alt="ins" style={{"marginTop":"0.5rem", "width": "50%", "marginBottom": "1rem", margin: "10%"}}/>
                 </h1>
-                {error && <p style={{"marginBottom": "10px", "font-size": "0.75rem", "lineHeight":"1rem", "color": "red"}}>{error}</p>}
+                {error && <p style={{"marginBottom": "10px", "fontSize": "0.75rem", "lineHeight":"1rem", "color": "red"}}>{error}</p>}
 
 
                 <form onSubmit={handleLogin} method="POST" style={{margin: "20px"}}>
