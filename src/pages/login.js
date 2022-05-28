@@ -1,5 +1,5 @@
 
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Navigate} from "react-router-dom";
 import {useContext, useEffect, useState} from 'react';
 import FirebaseContext from '../context/firebase';
 import {Link} from "react-router-dom"
@@ -7,7 +7,8 @@ import * as ROUTES from '../constants/routes';
 import { getAuth, signInWithEmailAndPassword , updateProfile} from "firebase/auth";
 import { getUserById } from "../services/firebase";
 
-export default function Login() {
+
+export default function Login(props) {
     const history = useNavigate();
     const {firebase} = useContext(FirebaseContext); //now subscribes to the nearest firebase provider
 
@@ -23,10 +24,8 @@ export default function Login() {
 
         try {
             const auth = getAuth();
-
             await signInWithEmailAndPassword(auth ,Email,password);
             //if everything ok
-          
             history(ROUTES.DASHBOARD);
         } catch(error) {
             setEmail("");
@@ -40,8 +39,14 @@ export default function Login() {
         document.title = "login - Instagram";
 
     }, []);
+
+    if (props.user) {
+        return (
+            <Navigate to={ROUTES.DASHBOARD}/>
+        );
+    }
     //need email address and password 
-    return (
+   else return (
         <div style = {
             {
                 "width": "100%",

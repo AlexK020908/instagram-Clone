@@ -21,8 +21,8 @@ const Dashboard = React.lazy(()=> import('./pages/dashboard'));
   <Router> 
     <Suspense fallback={<p>loading...</p>}>
       <Routes>
-        <Route path={ROUTES.LOGIN} element={<Login />}/>
-        <Route path = {ROUTES.SIGNUP} element ={<Signup/>}/>
+        <Route path={ROUTES.LOGIN} element={<Login user ={user}/>}/>
+        <Route path = {ROUTES.SIGNUP} element ={<Signup user = {user}/>}/>
         <Route path = {ROUTES.DASHBOARD} element = {<Dashboard user={user}/>}/>
         <Route path = "*" element = {<NotFound/>}/>
       </Routes>

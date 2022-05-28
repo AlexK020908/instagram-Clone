@@ -7,8 +7,9 @@ import * as ROUTES from '../constants/routes';
 import { doesUsernameExist } from "../services/firebase";
 import { getAuth, createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore"; 
+import { Navigate } from "react-router-dom";
 
-export default function SignUp() {
+export default function SignUp(props) {
     const history = useNavigate();
     const {firebase} = useContext(FirebaseContext); //now subscribes to the nearest firebase provider
 
@@ -67,7 +68,12 @@ export default function SignUp() {
 
     }, []);
     //need email address and password 
-    return (
+    if (props.user) {
+        return (
+            <Navigate to={ROUTES.DASHBOARD}/>
+        )
+    }
+    else return (
         <div style = {
             {
                 "width": "100%",
