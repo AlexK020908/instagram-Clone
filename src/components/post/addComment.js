@@ -10,7 +10,7 @@ import { getAuth, updateProfile } from 'firebase/auth';
 
 export default function AddComment(props) {
     //need docId comments setComments commentInput 
-    const [comment, setComment] = useState('');
+    let [comment, setComment] = useState('');
     const {firebase} = useContext(FireBaseContext);
 
 
