@@ -9,14 +9,14 @@ export default function Comments(props) {
     return (
         <>
             <div> 
-                {props.comments.length >= 2 && (
+                {comments.length >= 3 && (
                     <p className = 'text-sm text-gray-700 mb-1 cursor-pointer' > 
                           view all {props.comments.length} comments
                           
                     </p>
                 )}
       
-                {props.comments.slice(0,1).map((item)=> {
+                {comments.slice(0,2).map((item)=> {
                     return (
                         <p key={`${item.comment}-${item.displayName}`} className='mb-1'>
                             <Link to={`/p/${item.displayName}`}>
@@ -41,6 +41,7 @@ export default function Comments(props) {
                 comments = {props.comments}
                 setComments = {setComments}
                 commentInput = {props.commentInput}  
+                username = {props.username}
             
             />
         

@@ -33,7 +33,6 @@ export default function Action(props) {
         //     following: following
         // });
 
-        console.log('props doc id eh bud', props.docId);
         const docRef = doc(firebase, 'photos', `${props.docId}`);
         await updateDoc(docRef, {
             likes:toggleLiked ? arrayRemove(userId) : arrayUnion(userId)
@@ -112,7 +111,7 @@ export default function Action(props) {
 
 
         <Footer caption= {props.caption} username = {props.username}/>
-        <Comments docId = {props.docId} comments = {props.comments} commentInput = {props.commentInput} />
+        <Comments docId = {props.docId} comments = {props.comments} commentInput = {props.commentInput} username ={props.username} />
 
     </div>
         

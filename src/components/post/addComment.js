@@ -5,28 +5,29 @@ import UserContext from '../../context/user'
 import { arrayUnion, arrayRemove, updateDoc} from "firebase/firestore";
 import PropTypes from 'prop-types'
 import { collection, query, where, getDocs,doc, getDoc} from "firebase/firestore";
-
+import { getAuth, updateProfile } from 'firebase/auth';
 
 
 export default function AddComment(props) {
     //need docId comments setComments commentInput 
     const [comment, setComment] = useState('');
     const {firebase} = useContext(FireBaseContext);
-    
+
 
     const user = useContext(UserContext);
-    const name = user.displayName;
+    const displayName = user.displayName;
+    console.log('display name', displayName);
 
     const handleSubmit = async (e) => {
-        console.log('currrent comments', props.comments);
+
         e.preventDefault();
         //already set comment here 
-        props.setComments([...props.comments, {comment, name}]);
+        props.setComments([...props.comments, {comment, displayName}]);
         //then here make a call to firebase and update that field
 
         const docRef = doc(firebase, 'photos', `${props.docId}`);
         await updateDoc(docRef, {
-            comments: arrayUnion({comment, name}),
+            comments: arrayUnion({comment, displayName}),
         })
     
 

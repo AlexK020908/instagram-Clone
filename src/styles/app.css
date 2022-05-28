@@ -527,9 +527,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-4 {
   height: 1rem;
 }
-.h-1\/2 {
-  height: 50%;
-}
 .w-8 {
   width: 2rem;
 }
@@ -616,10 +613,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 .pl-0 {
   padding-left: 0px;
