@@ -6,10 +6,12 @@ import useAuthListener from './hooks/use-auth-listener';
 import UserContext from './context/user'; //we created this context in the context folder very easily, it is just a random context class with a value assigned to the context 
 
 //we want 
-const Login = React.lazy(()=>import ('./pages/login'));
+const Login = React.lazy(()=>import ('./pages/login')); //only reload this page if it is needed 
 const Signup = React.lazy(()=>import('./pages/signup'));
 const NotFound = React.lazy(()=>import('./pages/NotFound'));
 const Dashboard = React.lazy(()=> import('./pages/dashboard'));
+const Profile = React.lazy(()=> import ('./pages/profile'));
+//at a current page --> we only really want one component --> so we only need to load for example the login page, the other pages are unnnessary 
  function App() {
   const {user} = useAuthListener();
 //to use the protected route we have to 
@@ -25,6 +27,7 @@ const Dashboard = React.lazy(()=> import('./pages/dashboard'));
         <Route path = {ROUTES.SIGNUP} element ={<Signup user = {user}/>}/>
         <Route path = {ROUTES.DASHBOARD} element = {<Dashboard user={user}/>}/>
         <Route path = "*" element = {<NotFound/>}/>
+        <Route path = {ROUTES.PROFILE} element={<Profile/>}/>
       </Routes>
       
             

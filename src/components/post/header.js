@@ -7,12 +7,12 @@ export default function Header(props) {
     return (
         <div className="flex border-b border-gray-primary h-4 p-4 py-8 items-center">
             <div className="flex items-center">
-                <Link to={`/p/${props.username}`} className="flex items-center"/>
+                <Link to={`/p/${props.username}`} className="flex items-center cursor-pointer">
 
                 <img src={`/images/avatars/${props.username}.png`} className='rounded-full h-8 w-8 flex mr-3' alt ="Profile">
                     
                 </img>
-                
+                </Link>
             </div> 
 
 
