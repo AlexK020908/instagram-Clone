@@ -25,6 +25,27 @@ export async function doesUsernameExist(username) {
 }
 
 
+export async function getUserByUsername(username) {
+    //networkd call to firebase
+    const user = [];
+    if (username !== undefined) {
+        const res = query(collection(firebase, "USERS"), where("username", "==", username));
+        // console.log(res);
+        const snapshot = await getDocs(res);
+    
+         snapshot.forEach((doc)=> user.push({...doc.data(), docId: doc.id}));
+        //console.log('user before return to profile', user);
+        
+
+    }
+
+    return user
+    
+
+    
+}
+
+
 export async function getUserById(id) { //we are getting user info by using its ID 
     
     const result = query(collection(firebase, "USERS"), where("userId", "==", id));
