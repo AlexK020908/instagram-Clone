@@ -170,3 +170,6 @@ export async function getPhotos(userId, followings) {
 
 
 }
+
+
+
