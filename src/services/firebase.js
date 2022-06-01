@@ -172,7 +172,7 @@ export async function getPhotos(userId, followings) {
 }
 
 
-export async function getPhotosByUsername(user, username) {
+export async function getPhotosByUsername(user) {
     // console.log('user passed into getphotos', user);
     const id = user.userId;
     // console.log('uid' , user.userId);
