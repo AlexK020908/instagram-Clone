@@ -1,6 +1,6 @@
 
 import {firebase, FieldValue} from '../lib/firebase'
-import { collection, query, where, getDocs,doc, getDoc} from "firebase/firestore";
+import { collection, query, where, getDocs,doc, getDoc, deleteDoc, connectFirestoreEmulator} from "firebase/firestore";
 import { data } from 'autoprefixer';
 import {updateDoc} from 'firebase/firestore'
 import user from '../components/sidebar/user';
@@ -172,4 +172,29 @@ export async function getPhotos(userId, followings) {
 }
 
 
+export async function getPhotosByUsername(user, username) {
+    // console.log('user passed into getphotos', user);
+    const id = user.userId;
+    // console.log('uid' , user.userId);
+    //now you can get the phpotos 
+    const result = query(collection(firebase, "photos"), where("userId", "==", id));
+    const docSnapShots = await getDocs(result);
+    //now we can add to photos arra 
+    const photos = [];
+    docSnapShots.forEach((doc)=> {
+        // console.log('photo data', doc.data());
+        // console.log('log doc id', doc.id);
+        photos.push({...doc.data() , docId: doc.id});
+
+    });
+
+
+    return photos;
+
+
+
+
+
+
+}
 
