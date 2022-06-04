@@ -1,9 +1,10 @@
 
 import {firebase, FieldValue} from '../lib/firebase'
-import { collection, query, where, getDocs,doc, getDoc, deleteDoc, connectFirestoreEmulator} from "firebase/firestore";
+import { collection, query, where, getDocs,doc, getDoc, deleteDoc, connectFirestoreEmulator, arrayRemove} from "firebase/firestore";
 import { data } from 'autoprefixer';
 import {updateDoc} from 'firebase/firestore'
 import user from '../components/sidebar/user';
+import { array } from 'prop-types';
 
 
 export async function doesUsernameExist(username) {
@@ -206,7 +207,7 @@ export async function isFollowingProfile(userId, profileUserId) {
     //profile user  
     const [profileUser] = await getUserById(profileUserId);
     console.log('profile user' , profileUser);
-    console.log('userid', userId);
+
 
     //NOW check if the userId is included in the profileUser/s followers list 
     const res = profileUser.followers.includes(userId);
@@ -215,3 +216,43 @@ export async function isFollowingProfile(userId, profileUserId) {
 
     //need to handle case where you are visiting your own profile 
 }
+
+
+ export async function removeProfileFollower(profileDocId, followingUserId) {
+     //first get doc related to profileDOcId
+     const ref = doc(firebase, "USERS", `${profileDocId}`);
+  
+     await updateDoc(ref, {
+         followers: arrayRemove(followingUserId)
+     })
+ }
+
+export async function removeProfileIdFromLoggedInUserFollowing(loggedInUserDocID, profileUserId) {
+    const ref = doc(firebase, 'USERS', `${loggedInUserDocID}`);
+    await updateDoc(ref, {
+        following: arrayRemove(profileUserId)
+    });
+
+}
+
+ export async function toggleFollow(isFollowingProfile, loggedInUserDocID, profileDocId, profileUserId, followingUserId, userFollowing) {
+     console.log('in services is followig', isFollowingProfile);
+     console.log('in services logged in user doc id', loggedInUserDocID);
+     console.log('in services profile doc id', profileDocId);
+     console.log('in services is profile User id ', profileUserId);
+     console.log('in services is logged in user iD', followingUserId);
+     console.log('user following list',userFollowing);
+     //use array union to remove and add to followers + followng list which we already have 
+
+
+     if (isFollowingProfile) {
+        //we are now following profile ---> add to followers of profile , and add profileId to following of current user
+        await updateProfileTargetFollowers(profileDocId, followingUserId);
+        await updateProfileFollowing(loggedInUserDocID, profileUserId, userFollowing)
+     } else {
+         //now we need function of array Remove
+         await removeProfileFollower(profileDocId, followingUserId);
+         await removeProfileIdFromLoggedInUserFollowing(loggedInUserDocID, profileUserId);
+     }
+
+ }

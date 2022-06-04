@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import PropTypes from 'prop-types'
 import useUser from '../../hooks/useUser'
-import {isFollowingProfile} from '../../services/firebase'
+import {isFollowingProfile, toggleFollow} from '../../services/firebase'
 import Skeleton from 'react-loading-skeleton';
 
 export default function Header(props) {
@@ -11,20 +11,23 @@ export default function Header(props) {
     const activeButtonFollow = user.username && user.username !== props.profile.username
    // console.log('followers count before pressing button', props.followersCount)
 //    console.log('profile', props.profile);
-//    console.log('following' , props.following.length)
+//     console.log('logged in user' , user);
 
-    const handleFollow = () => {
+    const handleFollow = async () => {
 
-    
 
+    console.log('is following right before calling follolw', following);
         props.setFollowerCount({
             followersCount: following ? props.followersCount - 1 :props.followersCount + 1
     })
 
+    
+       setFollow(!following);
 
 
-  //  console.log('followers count after', props.followersCount);
-    setFollow((following) => !following);
+
+
+    await toggleFollow(!following, user.docId, props.profile.docId, props.profile.userId, user.userId, user.following);
 
 
 
