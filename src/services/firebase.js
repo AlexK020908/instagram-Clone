@@ -198,3 +198,20 @@ export async function getPhotosByUsername(user) {
 
 }
 
+
+
+export async function isFollowingProfile(userId, profileUserId) {
+
+    //check if this user is following the profile with the profileUserId
+    //profile user  
+    const [profileUser] = await getUserById(profileUserId);
+    console.log('profile user' , profileUser);
+    console.log('userid', userId);
+
+    //NOW check if the userId is included in the profileUser/s followers list 
+    const res = profileUser.followers.includes(userId);
+    console.log('res', res);
+    return res;
+
+    //need to handle case where you are visiting your own profile 
+}

@@ -9,13 +9,14 @@ import { getUserById } from '../services/firebase';
 
 export default function useUser() {
     const[activeUser, setActiveUser] = useState({});
-    const user = useContext(UserContext);
+    const user = useContext(UserContext); //this gets the context user --> but it does not actually give the document 
 
     useEffect(()=> {
         async function getUserObjByUserId() {
             //the best way to qeury user from the firestore is to use the userId
             //we need a function that we can call (firebase service) that gets the user data based on ID
-            const [response] = await getUserById(user.uid);  //user is the context we pass down to the componenet tree 
+            const [response] = await getUserById(user.uid);  //user is the context we pass down to the componenet tree , here we retrive the document from the
+            //userid from the user context
             setActiveUser(response);  
         }
 

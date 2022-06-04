@@ -4,6 +4,9 @@ import PropTypes from  'prop-types'
 
 
 export default function Photos(props) {
+
+    console.log('required photos in profile photos', props.photos);
+
     return null;
 }
 

@@ -14,7 +14,8 @@ module.exports  = {
       "./src/components/post/action.js",
       "./src/components/post/footer.js",
       "./src/components/post/comments.js",
-      './src/components/post/addComment.js'],
+      './src/components/post/addComment.js',
+    './src/components/profile/header.js'],
         theme: {
           extend: {
             colors: {

@@ -3,6 +3,7 @@ import Header from './header'
 import { useReducer, useEffect } from 'react'
 import {getUserByUsername, getPhotosByUsername} from '../../services/firebase'
 import Photos from './photos.js'
+import user from '../sidebar/user'
 export default function Profile(props) {
     //need some initial state 
 
@@ -36,8 +37,13 @@ export default function Profile(props) {
 
     return (
         <>
-            <Header/>
+            <Header photosCount ={photosCollection ? photosCollection.length : 0}
+                    profile={profile}
+                    followersCount = {followersCount}
+                    setFollowerCount = {dispatch}
+            />
             <Photos photos= {photosCollection}/>
+        
         </>
     );
 
