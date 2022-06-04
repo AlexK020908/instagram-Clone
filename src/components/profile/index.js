@@ -39,6 +39,7 @@ export default function Profile(props) {
         <>
             <Header photosCount ={photosCollection ? photosCollection.length : 0}
                     profile={profile}
+                    following={profile.following}
                     followersCount = {followersCount}
                     setFollowerCount = {dispatch}
             />

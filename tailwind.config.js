@@ -20,6 +20,7 @@ module.exports  = {
           extend: {
             colors: {
               'red-primary': '#ff0000',
+              'blue-medium': 'rgb(0,92,152)'
             },
           },
         },

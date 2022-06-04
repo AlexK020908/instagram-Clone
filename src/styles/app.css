@@ -453,14 +453,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .col-span-3 {
   grid-column: span 3 / span 3;
 }
-.col-start-2 {
-  grid-column-start: 2;
+.col-start-1 {
+  grid-column-start: 1;
 }
-.col-start-5 {
-  grid-column-start: 5;
+.col-start-4 {
+  grid-column-start: 4;
 }
-.col-end-4 {
-  grid-column-end: 4;
+.col-end-3 {
+  grid-column-end: 3;
 }
 .col-end-6 {
   grid-column-end: 6;
@@ -505,6 +505,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .mb-1 {
   margin-bottom: 0.25rem;
+}
+.mr-10 {
+  margin-right: 2.5rem;
 }
 .block {
   display: block;
@@ -610,6 +613,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+.bg-blue-medium {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 92 152 / var(--tw-bg-opacity));
 }
 .fill-red-primary {
   fill: #ff0000;

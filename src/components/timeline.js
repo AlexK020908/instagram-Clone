@@ -13,7 +13,7 @@ export default function Timeline() {
     //render photos if they exist (need a post componenet )
     //if user has no photo, ask them to create some photos 
     return (
-        <div className="container col-span-2 col-start-2 col-end-4">
+        <div className="container col-span-2 col-start-1 col-end-3">
             {!photos ? (
                 <>
                  <Skeleton height={640} count={4} width={500} className="mb-5"/>

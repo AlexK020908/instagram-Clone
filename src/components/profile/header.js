@@ -2,15 +2,33 @@ import {useState, useEffect} from 'react';
 import PropTypes from 'prop-types'
 import useUser from '../../hooks/useUser'
 import {isFollowingProfile} from '../../services/firebase'
-import { yearsToQuarters } from 'date-fns';
-
+import Skeleton from 'react-loading-skeleton';
 
 export default function Header(props) {
     const [following, setFollow] = useState(false); //prob props here, since private if not following
     //WE NEED hook of user because we want the user that is logged in in auth from firebase 
     const {user} = useUser();
     const activeButtonFollow = user.username && user.username !== props.profile.username
+   // console.log('followers count before pressing button', props.followersCount)
+//    console.log('profile', props.profile);
+//    console.log('following' , props.following.length)
 
+    const handleFollow = () => {
+
+    
+
+        props.setFollowerCount({
+            followersCount: following ? props.followersCount - 1 :props.followersCount + 1
+    })
+
+
+
+  //  console.log('followers count after', props.followersCount);
+    setFollow((following) => !following);
+
+
+
+    };
 
     //now we need useEffect here because when the isFollowing state changes, we want ot be able to make the profile private or make it oublic 
     useEffect(()=> {
@@ -43,8 +61,88 @@ export default function Header(props) {
             <div className='flex items-center justify-center flex-col col-span-2'>
                <div className='container flex items-center col-span-1'>
                 <p className='text-2xl mr-4'>
-                    {user.username}
+                    {props.profile.username}
                 </p>
+                {activeButtonFollow && (
+                    <button
+                        className='bg-blue-medium font-bold rounded text-white w-20 h-8 items-center'
+                        onClick={handleFollow}
+                        >
+                    {following ? 'unfollow' : 'follow'}
+
+
+
+                    </button>
+                
+                )}
+              </div>
+
+              <div className='container flex mt-4'> 
+                    {props.profile === undefined || props.profile.following === undefined ? (
+                       <Skeleton count ={1} width= {677} height = {24}></Skeleton>
+                    ): (
+                        <>
+                        <p className='mr-10'>
+                            <span className='font-bold'>
+                            {props.photosCount}
+                            {' '}
+                            {props.photosCount <= 1 ? 'post' : 'posts'}
+                            </span>
+                        </p>
+
+
+                        <p className='mr-10'> 
+                            <span className='font-bold'> 
+                            {props.followersCount}
+                            {' '}
+                            {props.followersCount <= 1 ? 'Follower' : 'Followers'}
+
+
+                            </span>
+
+
+
+                        </p>
+
+
+                        <p className='mr-10'> 
+                            <span className='font-bold'> 
+                            {props.following.length}
+                            {' '}
+                            Following
+                        </span>
+
+
+
+                        </p>
+                        </>
+
+
+
+                    )}
+                
+
+
+              </div>
+
+              <div className='container mt-4'> 
+                    <p className='font-small text-sm'>
+                        {props.profile === undefined ? (
+                            <Skeleton count = {1}></Skeleton>
+                        ) : (
+                            <>      
+                                {props.profile.fullName}
+                            
+                            </>
+
+                            
+                        )}
+                    
+                    
+                    
+                    </p>
+
+
               </div>
             </div>
       
@@ -70,7 +168,8 @@ Header.propTypes ={
     photosCount: PropTypes.number.isRequired, 
     profile: PropTypes.object.isRequired, 
     followersCount: PropTypes.number.isRequired,
-    setFollowerCount: PropTypes.func.isRequired
+    setFollowerCount: PropTypes.func.isRequired,
+    following : PropTypes.array.isRequired
 
 
 
