@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import useUser from '../../hooks/useUser'
 import {isFollowingProfile, toggleFollow} from '../../services/firebase'
 import Skeleton from 'react-loading-skeleton';
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Header(props) {
     const [following, setFollow] = useState(false); //prob props here, since private if not following

@@ -4,6 +4,7 @@ import { useReducer, useEffect } from 'react'
 import {getUserByUsername, getPhotosByUsername} from '../../services/firebase'
 import Photos from './photos.js'
 import user from '../sidebar/user'
+import "react-loading-skeleton/dist/skeleton.css";
 export default function Profile(props) {
     //need some initial state 
 
