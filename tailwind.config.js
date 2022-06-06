@@ -23,6 +23,9 @@ module.exports  = {
               'red-primary': '#ff0000',
               'blue-medium': 'rgb(0,92,152)'
             },
+            variants: {
+              display:['group-hover']
+            }
           },
         },
         plugins: [],
