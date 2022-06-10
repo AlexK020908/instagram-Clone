@@ -1,17 +1,16 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { useContext } from "react";
 import FireBaseContext from "../context/firebase"; //we need firebase context because it gives us the functions, we want to be able to sign out using firebase 
-import UserContext from "../context/user";
 import * as ROUTE from '../constants/routes';
 import {Link, Routes} from 'react-router-dom';
-import { onAuthStateChanged } from "firebase/auth";
 import '../styles/app.css';
 import { getAuth } from "firebase/auth";
+import useUser from '../hooks/useUser'
 
 export default function Header() {
-    const firebase = useContext(FireBaseContext);
-    const user = useContext(UserContext);
+    const {user} = useUser();
     const auth = getAuth();
+    
 
 
 
@@ -91,9 +90,9 @@ export default function Header() {
                         </button>
         
                         <div className = "flex items-ceter cursor-pointer">
-                            <Link to={`/p/${user.displayName}`}>
+                            <Link to={`/p/${user.username}`}>
                                 <img className="rounded-full h-8 w-8 flex"
-                                src = {`/images/avatars/Alex_Kang.png`}
+                                src = {`/images/avatars/${user.username}.png`}
                                 alt = "profile"/>
 
 

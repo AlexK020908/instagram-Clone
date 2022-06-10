@@ -15,13 +15,13 @@ export default function useAuthListener() {
               localStorage.setItem('authUser', JSON.stringify(authUser)); //converts a javascript object into a JSON string 
               setUser(authUser);
 
-              updateProfile(auth.currentUser, {
-                    displayName: "Alex_Kang"
-              } ).then(()=> {
-                  console.log('success!')
-              }).catch(()=> {
-                console.log('error');
-              })
+            //   updateProfile(auth.currentUser, {
+            //         displayName: "Alex_Kang"
+            //   } ).then(()=> {
+            //       console.log('success!')
+            //   }).catch(()=> {
+            //     console.log('error');
+            //   })
               
             
           } else {
@@ -34,7 +34,7 @@ export default function useAuthListener() {
 
         //below we want to clean up 
         return() => listener();
-    }, [firebase]);
+    }, [firebase, auth]);
 
 
 

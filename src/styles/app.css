@@ -474,9 +474,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .col-start-4 {
   grid-column-start: 4;
 }
-.col-start-3 {
-  grid-column-start: 3;
-}
 .col-start-2 {
   grid-column-start: 2;
 }
@@ -485,9 +482,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .col-end-6 {
   grid-column-end: 6;
-}
-.col-end-4 {
-  grid-column-end: 4;
 }
 .mx-auto {
   margin-left: auto;

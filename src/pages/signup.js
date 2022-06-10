@@ -47,6 +47,7 @@ export default function SignUp(props) {
                     username: Username,
                     fullName: Fullname,
                     emailAddress: Email,
+                    follower: [],
                     following: [],
                     dateCreated: Date.now()
                   });

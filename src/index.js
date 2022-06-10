@@ -11,7 +11,7 @@ root.render(
 <FireBaseContext.Provider value={{firebase, FieldValue}}>  
   <App />
 </FireBaseContext.Provider>);
-
+//we wrap the app with firebase so the entire app can use the firebase context, like profile dashboard etc 
 //we surrounded app component with firebaseContext
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

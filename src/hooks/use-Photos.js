@@ -19,18 +19,18 @@ export default function UsePhotos() {
          
             const [followings] = await getFollowings(userContext.uid);
             console.log('el followings', followings);
-            let photos = [];
+            let photosarray = [];
             if (followings.length > 0) {
                 //do smt here 
-                photos = await getPhotos(userContext.uid, followings);
-                setPhotos(photos);
+                photosarray = await getPhotos(userContext.uid, followings);
+                if (photosarray.length === 0) setPhotos([]);
+                else setPhotos(photosarray);
             }
         }
     
         getPhotosAsync();
     }, [userContext]);
-
-
+    
     return {photos}
     
 }
