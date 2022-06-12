@@ -7,7 +7,7 @@ export default function Timeline() {
     //first need to get logged in user's photos from fire base --> TODO: need to add photos to fire base   (by using a hook)
 
     const { photos  }  = UsePhotos();
-    console.log('jeet following phots ', photos);
+    console.log('rogy following phots ', photos);
 
     //on loading photos, use react sksletong 
     //render photos if they exist (need a post componenet )
@@ -24,7 +24,7 @@ export default function Timeline() {
                     <Post className="content-center" key={doc.docId} content = {doc}/>
                 )
             ):  (
-                <p className="text-center text-2xl">Follow people to view posts</p>
+                <p className="text-center text-2xl font-bold">Follow people to view posts</p>
             )}
 
         </div>

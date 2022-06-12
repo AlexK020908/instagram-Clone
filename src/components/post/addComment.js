@@ -24,27 +24,28 @@ export default function AddComment(props) {
         //already set comment here 
         props.setComments([...props.comments, {comment, displayName}]);
         //then here make a call to firebase and update that field
-
-        setComment('');
         //store in fire base using field value !
         const docRef = doc(firebase, 'photos', `${props.docId}`);
         await updateDoc(docRef, {
             comments: arrayUnion({comment, displayName}),
         })
 
-       
+
+        
+        setComment('');
+        
 
     }
     return (
         <div className="flex border-t border-gray-primary">
             <form className='flex justify-between pl-0 pr-5'
             method = 'POST'
-            onSubmit={(e) => props.comment.length >= 1  ? handleSubmit(e) : e.preventDefault()}
+            onSubmit={handleSubmit}
             />
 
             <input aria-label='add a comment' placeholder='Enter your comment...'
             autoComplete='off' type="text" className='text-gray-base w-full py-5'
-            ref = {props.commentInput} onChange={({target})=> setComment(target.value)}>
+            ref = {props.commentInput} onChange={event => setComment(event.target.value)}>
                 
 
 

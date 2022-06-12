@@ -10,9 +10,7 @@ export default function Header(props) {
     //WE NEED hook of user because we want the user that is logged in in auth from firebase 
     const {user} = useUser();
     const activeButtonFollow = user.username && user.username !== props.profile.username
-   // console.log('followers count before pressing button', props.followersCount)
-//    console.log('profile', props.profile);
-//     console.log('logged in user' , user);
+
 
     const handleFollow = async () => {
 

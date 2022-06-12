@@ -8,7 +8,7 @@ import useUser from './useUser';
 export default function UsePhotos() {
 
 
-    const [photos, setPhotos] = useState(null);
+    const [photos, setPhotos] = useState([]);
     const userContext = useContext(UserContext);
 
     

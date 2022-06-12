@@ -22,8 +22,6 @@ export default function Profile(props) {
         async function getProfileInfoAndPhotos() {
             const [user] = await getUserByUsername(props.username);
             const photos =  await getPhotosByUsername(user);
-            console.log('photos returned in profile index', photos);
-            console.log('user usernmae', props.username)
             dispatch({profile: user, photosCollection: photos, followersCount: user.followers.length});
         }
 
